@@ -1,0 +1,547 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- GSAP triggers will target classes like .gsap-up, .gsap-fade -->
+
+<!-- ========================================
+     Hero Section
+======================================== -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-textMain text-primary">
+    <!-- Background Elements -->
+    <div class="absolute inset-0 z-0 opacity-20">
+        <img src="{% static 'images/hero/hero_image.svg' %}" alt="Hero Background" class="w-full h-full object-cover">
+    </div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+        <div class="gsap-hero-up inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-700 bg-gray-800/50 backdrop-blur-sm text-sm text-gray-300 mb-8">
+            <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+            360° Digital & Tech Agency
+        </div>
+        
+        <h1 class="gsap-hero-up text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-tight">
+            Design <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-accent">Bold.</span><br>
+            Build <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-success">Secure.</span><br>
+            Scale <span class="text-white">Smart.</span>
+        </h1>
+        
+        <p class="gsap-hero-up text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Software Engineering · Cybersecurity · Growth Marketing · Brand Design
+        </p>
+        
+        <div class="gsap-hero-up flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <a href="#contact" class="bg-primary text-textMain px-8 py-4 rounded-md font-medium text-lg hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 group">
+                Build What's Next
+                <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#services" class="border border-gray-700 bg-gray-800/50 backdrop-blur-sm text-primary px-8 py-4 rounded-md font-medium text-lg hover:bg-gray-700 transition-colors flex items-center justify-center">
+                Explore Services
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Company Introduction
+======================================== -->
+<section id="about" class="py-24 lg:py-32 bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl">
+            <h2 class="gsap-up text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-textMain leading-tight">
+                One Team. Every Discipline.<br>
+                <span class="text-gray-400">One Accountable Outcome.</span>
+            </h2>
+            <div class="space-y-6 text-lg text-textSecondary leading-relaxed gsap-up">
+                <p>
+                    Krypton Hub is a 360-degree digital and technology agency built on a simple premise: the best outcomes happen when engineering, security, and creative growth strategy operate as a single organism rather than a chain of disconnected vendors.
+                </p>
+                <p>
+                    Where traditional agencies hand projects between silos — a dev shop here, a marketing firm there, a freelancer somewhere else — we operate as a unified execution engine. We don't just execute projects — we engineer digital ecosystems built to scale, defend, and win.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Mission & Vision
+======================================== -->
+<section class="py-24 bg-gray-50 border-y border-borderCustom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-20">
+            <!-- Mission -->
+            <div class="gsap-up bg-white p-10 rounded-2xl shadow-sm border border-borderCustom">
+                <div class="text-accent text-sm font-bold tracking-widest uppercase mb-4">Mission</div>
+                <h3 class="text-3xl font-bold mb-6 text-textMain">Accelerating Enterprise Evolution</h3>
+                <p class="text-textSecondary leading-relaxed">
+                    To accelerate enterprise evolution by fusing world-class engineering, uncompromising security, and intelligent growth strategy into one seamless discipline — building digital infrastructure that performs under pressure, scales without fear, and secures the future our clients are building toward.
+                </p>
+            </div>
+            <!-- Vision -->
+            <div class="gsap-up bg-white p-10 rounded-2xl shadow-sm border border-borderCustom">
+                <div class="text-accent text-sm font-bold tracking-widest uppercase mb-4">Vision</div>
+                <h3 class="text-3xl font-bold mb-6 text-textMain">Pioneering the Next Standard</h3>
+                <p class="text-textSecondary leading-relaxed">
+                    We envision a future where 'technology partner' and 'growth partner' are no longer separate line items — where security, strategy, and creativity are a single integrated standard for how ambitious companies build. We intend to pioneer that standard and set the benchmark for what a truly unified digital and technology partner looks like.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Leadership Message
+======================================== -->
+<section class="py-24 lg:py-32 bg-textMain text-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-16 items-center">
+            <div class="lg:col-span-4 gsap-fade">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 mx-auto lg:mx-0 rounded-full overflow-hidden border-4 border-gray-800">
+                    <img src="{% static 'images/team/rifat.svg' %}" alt="Rifat Alam" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="lg:col-span-8 gsap-up">
+                <div class="text-success text-sm font-bold tracking-widest uppercase mb-4">Message From Leadership</div>
+                <h2 class="text-4xl lg:text-5xl font-bold mb-8">A Note From Our Founder</h2>
+                <div class="space-y-6 text-gray-400 text-lg leading-relaxed mb-8">
+                    <p>I came into technology through an unusual combination — CCNA-certified network engineering on one side, digital marketing and graphic design on the other. That mix taught me something most single-specialty shops miss: the businesses that win aren't the ones with access to the most tools, they're the ones who can make infrastructure, security, design, and growth work together instead of against each other.</p>
+                    <p>In today's environment, speed without security is a liability, and security without speed is a bottleneck. Smart scalability means refusing to choose between the two — that is the standard I hold this team to on every engagement.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-white">Rifat Alam</h4>
+                    <p class="text-gray-500">Founder & Chief Executive, Krypton Hub</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Team Section
+======================================== -->
+<section id="team" class="py-24 lg:py-32 bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-20 max-w-3xl gsap-up">
+            <div class="text-accent text-sm font-bold tracking-widest uppercase mb-4">The 360 Powerhouse</div>
+            <h2 class="text-4xl md:text-5xl font-bold text-textMain mb-6">One Roster. Five Disciplines.<br>Zero Handoffs.</h2>
+            <p class="text-xl text-textSecondary">Eight dedicated specialists, five core disciplines, one accountable team.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Team Member 1 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
+                <div class="flex items-center gap-6 mb-6">
+                    <img src="{% static 'images/team/nabid.svg' %}" alt="Nabid Ahmad" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
+                    <div>
+                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Advanced Engineering</div>
+                        <h4 class="text-xl font-bold text-textMain">Nabid Ahmad</h4>
+                        <p class="text-textSecondary text-sm">Full-Stack Developer</p>
+                    </div>
+                </div>
+                <p class="text-textSecondary text-sm leading-relaxed">Nabid works across Python/Django and PHP/Laravel, with hands-on project experience spanning school management systems, pharmacy management platforms, and fitness-club web applications.</p>
+            </div>
+            
+            <!-- Team Member 2 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
+                <div class="flex items-center gap-6 mb-6">
+                    <img src="{% static 'images/team/rony.svg' %}" alt="Md Shariful Islam Rony" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
+                    <div>
+                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Advanced Engineering</div>
+                        <h4 class="text-xl font-bold text-textMain">Md Shariful Islam Rony</h4>
+                        <p class="text-textSecondary text-sm">Full-Stack Developer</p>
+                    </div>
+                </div>
+                <p class="text-textSecondary text-sm leading-relaxed">Rony is a Python/Django developer who has architected and deployed three live full-stack applications, including a flight-booking platform integrating Google OAuth 2.0 and PostgreSQL.</p>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
+                <div class="flex items-center gap-6 mb-6">
+                    <img src="{% static 'images/team/khairul.svg' %}" alt="Md Khairul Islam Akaid" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
+                    <div>
+                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Defensive Architecture</div>
+                        <h4 class="text-xl font-bold text-textMain">Md Khairul Islam Akaid</h4>
+                        <p class="text-textSecondary text-sm">Cybersecurity Professional</p>
+                    </div>
+                </div>
+                <p class="text-textSecondary text-sm leading-relaxed">Khairul brings a Linux-first foundation to the team's security practice, with a growing specialization in cybersecurity fundamentals, threat awareness, and security operations tooling.</p>
+            </div>
+
+            <!-- Team Member 4 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
+                <div class="flex items-center gap-6 mb-6">
+                    <img src="{% static 'images/team/abdullah.svg' %}" alt="Abdullah Al Siddik" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
+                    <div>
+                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Defensive Architecture</div>
+                        <h4 class="text-xl font-bold text-textMain">Abdullah Al Siddik</h4>
+                        <p class="text-textSecondary text-sm">Cybersecurity Professional</p>
+                    </div>
+                </div>
+                <p class="text-textSecondary text-sm leading-relaxed">Abdullah focuses on offensive and defensive security — penetration testing, vulnerability assessment, and network monitoring. He applies OWASP Top 10 methodology to every web application the team ships.</p>
+            </div>
+
+            <!-- Team Member 5 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
+                <div class="flex items-center gap-6 mb-6">
+                    <img src="{% static 'images/team/farzana.svg' %}" alt="Farzana Akter Popi" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
+                    <div>
+                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Growth & Performance</div>
+                        <h4 class="text-xl font-bold text-textMain">Farzana Akter Popi</h4>
+                        <p class="text-textSecondary text-sm">Growth Specialist</p>
+                    </div>
+                </div>
+                <p class="text-textSecondary text-sm leading-relaxed">Farzana leads client-facing marketing and lead generation. Her background spans digital marketing, CRM, and direct sales across several customer-facing roles.</p>
+            </div>
+
+            <!-- Team Member 6 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
+                <div class="flex items-center gap-6 mb-6">
+                    <img src="{% static 'images/team/afia.svg' %}" alt="Afia Najnine" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
+                    <div>
+                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Growth & Performance</div>
+                        <h4 class="text-xl font-bold text-textMain">Afia Najnine</h4>
+                        <p class="text-textSecondary text-sm">Client Relations Specialist</p>
+                    </div>
+                </div>
+                <p class="text-textSecondary text-sm leading-relaxed">Afia brings a client-facing foundation to the growth team, currently managing student communications, Meta Business Suite, and WhatsApp broadcast campaigns.</p>
+            </div>
+
+            <!-- Team Member 7 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group md:col-span-2 lg:col-span-1">
+                <div class="flex items-center gap-6 mb-6">
+                    <img src="{% static 'images/team/nurul.svg' %}" alt="Nurul Ahanaf Adil" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
+                    <div>
+                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Visual Identity</div>
+                        <h4 class="text-xl font-bold text-textMain">Nurul Ahanaf Adil</h4>
+                        <p class="text-textSecondary text-sm">Graphic Designer</p>
+                    </div>
+                </div>
+                <p class="text-textSecondary text-sm leading-relaxed">Nurul is an NSDA-certified graphic designer working across Adobe Photoshop and Illustrator to deliver social content, banners, and brand collateral.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Services Section
+======================================== -->
+<section id="services" class="py-24 lg:py-32 bg-gray-50 border-t border-borderCustom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-20 gsap-up">
+            <h2 class="text-4xl md:text-5xl font-bold text-textMain mb-6">Our 360° Services</h2>
+            <p class="text-xl text-textSecondary max-w-2xl mx-auto">Enterprise-Grade Capability, Under One Roof. Four Disciplines. One Coordinated Delivery.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Service 1 -->
+            <div class="gsap-up bg-textMain text-primary rounded-3xl p-10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl -mr-20 -mt-20 transition-all group-hover:bg-accent/30"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="code-2" class="w-8 h-8 text-accent"></i>
+                    </div>
+                    <div class="text-accent font-bold text-sm tracking-widest mb-2">SERVICE 1/4</div>
+                    <h3 class="text-2xl font-bold mb-4">Software Architecture & Web Engineering</h3>
+                    <p class="text-gray-400 mb-8">Custom applications and infrastructure engineered to scale, not just to launch.</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent"></i> Custom web & enterprise apps</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent"></i> Django & Laravel architecture</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent"></i> API integrations & DB Design</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="gsap-up bg-textMain text-primary rounded-3xl p-10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-success/20 rounded-full blur-3xl -mr-20 -mt-20 transition-all group-hover:bg-success/30"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-success"></i>
+                    </div>
+                    <div class="text-success font-bold text-sm tracking-widest mb-2">SERVICE 2/4</div>
+                    <h3 class="text-2xl font-bold mb-4">Cybersecurity & Threat Mitigation</h3>
+                    <p class="text-gray-400 mb-8">Security engineered in from day one — not audited in after launch.</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-success"></i> Penetration testing & ethical hacking</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-success"></i> Vulnerability assessments</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-success"></i> Infrastructure hardening</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="gsap-up bg-textMain text-primary rounded-3xl p-10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/20 rounded-full blur-3xl -mr-20 -mt-20 transition-all group-hover:bg-orange-500/30"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="trending-up" class="w-8 h-8 text-orange-400"></i>
+                    </div>
+                    <div class="text-orange-400 font-bold text-sm tracking-widest mb-2">SERVICE 3/4</div>
+                    <h3 class="text-2xl font-bold mb-4">Performance Marketing & Brand Growth</h3>
+                    <p class="text-gray-400 mb-8">Growth engineered on real data, not assumptions.</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-orange-400"></i> Lead generation & campaigns</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-orange-400"></i> Content strategy & funnels</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-orange-400"></i> Brand positioning</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="gsap-up bg-textMain text-primary rounded-3xl p-10 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl -mr-20 -mt-20 transition-all group-hover:bg-purple-500/30"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
+                        <i data-lucide="palette" class="w-8 h-8 text-purple-400"></i>
+                    </div>
+                    <div class="text-purple-400 font-bold text-sm tracking-widest mb-2">SERVICE 4/4</div>
+                    <h3 class="text-2xl font-bold mb-4">UI/UX & Brand Design</h3>
+                    <p class="text-gray-400 mb-8">Design that is engineered for conversion and trust, not just aesthetics.</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-400"></i> Brand identity systems</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-400"></i> Web interface design (UI/UX)</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-400"></i> Social & campaign assets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Why Choose Us & Synergy
+======================================== -->
+<section class="py-24 lg:py-32 bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+            <div class="gsap-fade">
+                <div class="text-accent text-sm font-bold tracking-widest uppercase mb-4">Why Partner With Us</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-textMain mb-6">The Synergy Advantage</h2>
+                <p class="text-lg text-textSecondary leading-relaxed mb-8">
+                    Hire separate vendors for every discipline and you inherit separate blind spots. Krypton Hub closes every one of those gaps by design. Our disciplines don't sit in adjacent lanes — they work inside each other's process, every day.
+                </p>
+                <div class="bg-textMain p-8 rounded-2xl text-primary border border-gray-800 shadow-xl">
+                    <p class="text-xl md:text-2xl font-bold mb-2">Most agencies sell you a service.</p>
+                    <p class="text-xl md:text-2xl font-bold text-success">We give you a system.</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-6 gsap-fade">
+                <div class="bg-gray-50 p-6 rounded-xl border border-borderCustom flex items-start gap-4 hover:border-accent transition-colors">
+                    <div class="bg-accent/10 p-3 rounded-lg text-accent mt-1">
+                        <i data-lucide="combine" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-textMain mb-2">Development × Cybersecurity</h4>
+                        <p class="text-textSecondary text-sm">Every line of code carries security requirements built in — not audited in after launch.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl border border-borderCustom flex items-start gap-4 hover:border-accent transition-colors">
+                    <div class="bg-purple-500/10 p-3 rounded-lg text-purple-500 mt-1">
+                        <i data-lucide="pen-tool" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-textMain mb-2">Engineering × Design</h4>
+                        <p class="text-textSecondary text-sm">Working from the same component set, so what gets designed is exactly what ships.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl border border-borderCustom flex items-start gap-4 hover:border-accent transition-colors">
+                    <div class="bg-orange-500/10 p-3 rounded-lg text-orange-500 mt-1">
+                        <i data-lucide="target" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-textMain mb-2">Design × Growth</h4>
+                        <p class="text-textSecondary text-sm">Collaborating on every interface so what looks best also converts best.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Process Timeline
+======================================== -->
+<section id="process" class="py-24 bg-gray-50 border-y border-borderCustom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 gsap-up">
+            <h2 class="text-4xl md:text-5xl font-bold text-textMain mb-6">A Coordinated Process</h2>
+            <p class="text-xl text-textSecondary">Not a Vendor Relay.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-4 gap-8">
+            <!-- Step 1 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom relative group">
+                <div class="text-5xl font-bold text-gray-100 absolute top-6 right-6 group-hover:text-accent/10 transition-colors number-font">01</div>
+                <div class="mb-6 bg-accent/10 w-14 h-14 rounded-xl flex items-center justify-center text-accent">
+                    <i data-lucide="search" class="w-7 h-7"></i>
+                </div>
+                <h4 class="text-xl font-bold text-textMain mb-4 relative z-10">Discover & Diagnose</h4>
+                <p class="text-textSecondary text-sm relative z-10">We audit your current stack, security posture, brand, and growth funnel to find the real bottlenecks.</p>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom relative group">
+                <div class="text-5xl font-bold text-gray-100 absolute top-6 right-6 group-hover:text-accent/10 transition-colors number-font">02</div>
+                <div class="mb-6 bg-accent/10 w-14 h-14 rounded-xl flex items-center justify-center text-accent">
+                    <i data-lucide="pen-tool" class="w-7 h-7"></i>
+                </div>
+                <h4 class="text-xl font-bold text-textMain mb-4 relative z-10">Architect & Design</h4>
+                <p class="text-textSecondary text-sm relative z-10">Technical architecture and user experience are blueprinted in parallel.</p>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom relative group">
+                <div class="text-5xl font-bold text-gray-100 absolute top-6 right-6 group-hover:text-accent/10 transition-colors number-font">03</div>
+                <div class="mb-6 bg-accent/10 w-14 h-14 rounded-xl flex items-center justify-center text-accent">
+                    <i data-lucide="blocks" class="w-7 h-7"></i>
+                </div>
+                <h4 class="text-xl font-bold text-textMain mb-4 relative z-10">Build & Secure</h4>
+                <p class="text-textSecondary text-sm relative z-10">Development and cybersecurity move together in the same sprint cycle.</p>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom relative group">
+                <div class="text-5xl font-bold text-gray-100 absolute top-6 right-6 group-hover:text-accent/10 transition-colors number-font">04</div>
+                <div class="mb-6 bg-accent/10 w-14 h-14 rounded-xl flex items-center justify-center text-accent">
+                    <i data-lucide="rocket" class="w-7 h-7"></i>
+                </div>
+                <h4 class="text-xl font-bold text-textMain mb-4 relative z-10">Launch & Defend</h4>
+                <p class="text-textSecondary text-sm relative z-10">Performance marketing driving growth while our team monitors what's underneath.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========================================
+     Contact Section / CTA
+======================================== -->
+<section id="contact" class="py-24 lg:py-32 bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16">
+            <!-- CTA Text -->
+            <div class="gsap-fade">
+                <h2 class="text-4xl md:text-5xl font-bold text-textMain mb-8 leading-tight">
+                    One Team.<br>
+                    Every Discipline.<br>
+                    No Limits.
+                </h2>
+                <p class="text-xl text-textSecondary mb-8 leading-relaxed">
+                    Your competitors are still juggling multiple vendors. You could be working with one accountable team that designs, builds, secures, and grows your digital future.
+                </p>
+                <div class="flex items-center gap-4 text-textMain">
+                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center border border-borderCustom">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-accent"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold">Dhaka, Bangladesh</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="gsap-fade bg-white p-8 md:p-12 rounded-3xl border border-borderCustom shadow-sm">
+                <h3 class="text-2xl font-bold text-textMain mb-6">Let's Build What's Next.</h3>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="p-4 mb-6 rounded-md {% if message.tags == 'success' %}bg-green-50 text-green-800 border border-green-200{% else %}bg-red-50 text-red-800 border border-red-200{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="POST" action="{% url 'home' %}#contact" class="space-y-6">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-textMain mb-2">Full Name *</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-borderCustom bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-textMain mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-borderCustom bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-textMain mb-2">Company</label>
+                            <input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg border border-borderCustom bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-textMain mb-2">Phone</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-borderCustom bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="service" class="block text-sm font-medium text-textMain mb-2">Interested In</label>
+                        <select id="service" name="service" class="w-full px-4 py-3 rounded-lg border border-borderCustom bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all appearance-none cursor-pointer">
+                            <option value="full_stack">Full 360° Integration</option>
+                            <option value="software">Software Architecture & Web Engineering</option>
+                            <option value="cybersecurity">Cybersecurity & Threat Mitigation</option>
+                            <option value="marketing">Performance Marketing & Brand Growth</option>
+                            <option value="design">UI/UX & Brand Design</option>
+                            <option value="other">Other Inquiry</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-textMain mb-2">Message *</label>
+                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-borderCustom bg-gray-50 focus:bg-white focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-textMain text-primary py-4 rounded-lg font-medium text-lg hover:bg-black transition-colors">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // GSAP Animations
+    document.addEventListener("DOMContentLoaded", (event) => {
+        // Wait for Alpine to finish hiding the loader if it takes a bit, but we can setup GSAP anyway
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animations
+        gsap.from(".gsap-hero-up", {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.15,
+            ease: "power3.out",
+            delay: 0.5
+        });
+
+        // Scroll Animations for generic elements
+        gsap.utils.toArray('.gsap-up').forEach(element => {
+            gsap.from(element, {
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out"
+            });
+        });
+
+        gsap.utils.toArray('.gsap-fade').forEach(element => {
+            gsap.from(element, {
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 0,
+                duration: 1,
+                ease: "power2.inOut"
+            });
+        });
+    });
+</script>
+{% endblock %}

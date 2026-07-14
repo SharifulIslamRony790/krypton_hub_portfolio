@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- 
+      Krypton Hub 360 - Premium Enterprise Landing Website
+      Role: Main Layout Template
+      Dependencies: Tailwind CSS, Alpine.js, GSAP, Lenis Smooth Scroll
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Dynamic SEO Tags -->
+    <title>{% block title %}Krypton Hub | 360° Digital & Tech Agency{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Krypton Hub is a 360-degree digital and technology agency. Design Bold. Build Secure. Scale Smart.{% endblock %}">
+    
+    <!-- Open Graph / Twitter Cards -->
+    <meta property="og:title" content="Krypton Hub | 360° Digital & Tech Agency">
+    <meta property="og:description" content="Design Bold. Build Secure. Scale Smart.">
+    <meta property="og:image" content="{% static 'images/seo/og-image.svg' %}">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{% static 'icons/logo.svg' %}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS (Tailwind Output) -->
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    
+    <!-- GSAP & Lenis -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js" defer></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-primary text-textMain antialiased font-inter overflow-x-hidden">
+    
+    <!-- Loader Component -->
+    {% include 'components/loader.html' %}
+
+    <script>
+        // Vanilla JS Loader Hide
+        window.addEventListener('load', function() {
+            var loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 500);
+            }
+        });
+        
+        // Lenis & GSAP Setup
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                const lenis = new Lenis({
+                    duration: 1.2,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    direction: 'vertical',
+                    gestureDirection: 'vertical',
+                    smooth: true
+                });
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
+                requestAnimationFrame(raf);
+            } catch(e) { console.error('Lenis error:', e); }
+            
+            try {
+                if (typeof gsap !== 'undefined') {
+                    gsap.registerPlugin(ScrollTrigger);
+                }
+            } catch(e) { console.error('GSAP error:', e); }
+        });
+    </script>
+
+    <!-- Navbar Component -->
+    {% include 'components/navbar.html' %}
+    
+    <!-- Main Content -->
+    <main id="main-content" class="min-h-screen">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <!-- Footer Component -->
+    {% include 'components/footer.html' %}
+    
+    <!-- Icons Initialization -->
+    <script>
+      lucide.createIcons();
+    </script>
+    
+    <!-- Custom Scripts -->
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

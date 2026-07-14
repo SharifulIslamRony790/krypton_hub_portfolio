@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * Krypton Hub 360 - Premium Enterprise CSS 
+ * Custom properties and lenis base styles 
+ */
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+body {
+    background-color: theme('colors.primary');
+    color: theme('colors.textMain');
+    font-family: theme('fontFamily.inter');
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: theme('fontFamily.satoshi');
+}
+
+.number-font {
+    font-family: theme('fontFamily.space');
+}
+
+/* Base Loader Styles */
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: theme('colors.textMain');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: theme('colors.primary');
+}
