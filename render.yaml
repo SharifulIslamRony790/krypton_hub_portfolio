@@ -1,7 +1,6 @@
 databases:
   - name: krypton-db
     databaseName: krypton_db
-    user: postgres
     plan: free
 
 services:
