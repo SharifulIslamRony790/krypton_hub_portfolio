@@ -1,13 +1,12 @@
 {% load static %}
 <!-- 
-  Krypton Hub 360 - Loader Component
+  Krypton 360° - Loader Component
   A premium initial loader using GSAP and Alpine.js
 -->
 <div id="loader" class="fixed inset-0 z-[9999] bg-textMain flex justify-center items-center transition-opacity duration-500">
     
     <div class="relative flex flex-col items-center">
-        <!-- Minimal SVG Logo Placeholder -->
-        <img src="{% static 'icons/logo_white.svg' %}" alt="Krypton Hub" class="w-48 h-auto mb-6 animate-pulse">
+        <img src="{% static 'icons/logo_white.svg' %}?v=7" alt="Krypton 360°" class="w-48 h-auto mb-6 animate-pulse">
         <div class="h-0.5 w-32 bg-primary/20 overflow-hidden rounded-full">
             <div class="h-full bg-primary origin-left animate-loader"></div>
         </div>

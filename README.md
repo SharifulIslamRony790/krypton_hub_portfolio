@@ -1,6 +1,6 @@
-# Krypton Hub - Premium Enterprise Landing Website
+# Krypton 360° - Premium Enterprise Landing Website
 
-This is a premium, enterprise-grade landing page for **Krypton Hub**, a 360-degree digital and technology agency. The project is built using modern web technologies to ensure high performance, security, and a beautiful user experience.
+This is a premium, enterprise-grade landing page for **Krypton 360°**, a 360-degree digital and technology agency. The project is built using modern web technologies to ensure high performance, security, and a beautiful user experience.
 
 ## Tech Stack
 - **Backend**: Django 5+, Python, PostgreSQL

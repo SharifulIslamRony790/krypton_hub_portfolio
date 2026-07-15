@@ -1,4 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
-    <rect width="100%" height="100%" fill="transparent"/>
-    <text x="50%" y="50%" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" fill="#FAFAFA" text-anchor="middle" dominant-baseline="middle">Krypton Hub</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 60" width="250" height="60">
+    <defs>
+        <clipPath id="front-ring-clip">
+            <rect x="0" y="55" width="45" height="45" />
+        </clipPath>
+    </defs>
+    <g transform="translate(5, 5) scale(0.5)">
+        <ellipse cx="55" cy="50" rx="40" ry="15" transform="rotate(-30 55 50)" fill="none" stroke="#2563EB" stroke-width="8"/>
+        <path d="M 35 20 L 35 80 M 35 55 L 70 20 M 50 40 L 80 80" fill="none" stroke="#2563EB" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+        <ellipse cx="55" cy="50" rx="40" ry="15" transform="rotate(-30 55 50)" fill="none" stroke="#2563EB" stroke-width="8" clip-path="url(#front-ring-clip)"/>
+    </g>
+    <text x="65" y="42" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">Krypton 360°</text>
 </svg>

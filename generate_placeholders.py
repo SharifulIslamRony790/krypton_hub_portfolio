@@ -31,5 +31,10 @@ for i in range(1, 6):
     create_svg(os.path.join(static_dir, 'images', 'clients', f'client_{i}.svg'), f"Client {i}", 200, 100, "#334155", "#94A3B8")
 
 # Logo
-create_svg(os.path.join(static_dir, 'icons', 'logo.svg'), "Krypton Hub", 200, 60, "transparent", "#111111")
-create_svg(os.path.join(static_dir, 'icons', 'logo_white.svg'), "Krypton Hub", 200, 60, "transparent", "#FAFAFA")
+create_svg(os.path.join(static_dir, 'icons', 'logo.svg'), "Krypton 360°", 200, 60, "transparent", "#111111")
+create_svg(os.path.join(static_dir, 'icons', 'logo_white.svg'), "Krypton 360°", 200, 60, "transparent", "#FAFAFA")
+create_svg(os.path.join(static_dir, 'icons', 'logo_dark.svg'), "Krypton 360°", 200, 60, "transparent", "#FAFAFA")
+create_svg(os.path.join(static_dir, 'icons', 'logo_master.svg'), "Krypton 360°", 400, 120, "transparent", "#111111")
+create_svg(os.path.join(static_dir, 'icons', 'logo_icon.svg'), "360°", 120, 120, "#111111", "#FAFAFA")
+create_svg(os.path.join(static_dir, 'icons', 'favicon.svg'), "360°", 64, 64, "#111111", "#FAFAFA")
+create_svg(os.path.join(static_dir, 'icons', 'apple-touch-icon.png'), "360°", 180, 180, "#111111", "#FAFAFA")
