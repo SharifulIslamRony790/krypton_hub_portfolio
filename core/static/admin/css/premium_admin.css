@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Luxury Palette */
+    --bg-base: #06192d; /* Darker Navy for depth */
+    --bg-surface: #0A2947; /* User's Deep Navy Blue */
+    --border-color: rgba(243, 228, 201, 0.15); /* Beige transparent */
+    --text-main: #F3E4C9; /* User's Beige / Light Sand */
+    --text-muted: #D3D4C0; /* User's Sage / Light Khaki */
+    --accent-bg: #8B5E3C; /* User's Bronze / Brown */
+    --accent-hover: #9e6d47; /* Lighter Bronze for hover */
+    --accent-border: #6e492d;
+}
+
+body {
+    font-family: 'Outfit', sans-serif !important;
+    background-color: var(--bg-base) !important;
+    color: var(--text-main) !important;
+}
+
+/* Reset Jazzmin/Bootstrap weird backgrounds */
+.wrapper, .content-wrapper, .main-footer {
+    background-color: var(--bg-base) !important;
+}
+
+/* Sidebar Styling */
+.main-sidebar {
+    background-color: var(--bg-surface) !important;
+    border-right: 1px solid var(--border-color) !important;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.2) !important;
+}
+
+.brand-link {
+    border-bottom: 1px solid var(--border-color) !important;
+    background-color: transparent !important;
+}
+
+.main-header {
+    background-color: var(--bg-surface) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.nav-sidebar .nav-item > .nav-link {
+    border-radius: 6px !important;
+    margin: 2px 12px !important;
+    width: auto !important;
+    color: var(--text-muted) !important;
+    transition: all 0.2s ease !important;
+}
+
+.nav-sidebar .nav-item.menu-open > .nav-link,
+.nav-sidebar .nav-item > .nav-link.active {
+    background-color: var(--accent-bg) !important;
+    color: var(--text-main) !important;
+    box-shadow: 0 2px 10px rgba(139, 94, 60, 0.4) !important;
+}
+
+.nav-sidebar .nav-item > .nav-link:not(.active):hover {
+    background-color: rgba(243, 228, 201, 0.05) !important;
+    color: var(--text-main) !important;
+}
+
+/* Breadcrumbs Fix */
+.breadcrumb {
+    background: transparent !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    border-radius: 0 !important;
+}
+
+.breadcrumb-item a {
+    color: var(--text-muted) !important;
+    text-decoration: none !important;
+    transition: color 0.2s !important;
+}
+
+.breadcrumb-item a:hover, .breadcrumb-item.active {
+    color: var(--text-main) !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--text-muted) !important;
+}
+
+/* Card Styling */
+.card {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-header {
+    border-bottom: 1px solid var(--border-color) !important;
+    background-color: transparent !important;
+    padding: 1rem 1.25rem !important;
+}
+
+.card-title {
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+}
+
+/* Premium Buttons */
+.btn {
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    padding: 6px 14px !important;
+    text-transform: capitalize !important;
+    transition: all 0.2s ease !important;
+    margin-left: 6px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Accent Buttons */
+.btn-primary, .btn-success, .btn-info, .btn-danger {
+    background: var(--accent-bg) !important;
+    color: #fff !important; /* White text pops better on bronze */
+    border: 1px solid var(--accent-border) !important;
+}
+
+.btn-primary:hover, .btn-success:hover, .btn-info:hover, .btn-danger:hover {
+    background: var(--accent-hover) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(139, 94, 60, 0.3) !important;
+    color: #fff !important;
+}
+
+/* Table Styling */
+.table {
+    color: var(--text-muted) !important;
+    margin-bottom: 0 !important;
+}
+
+.table thead th {
+    border-bottom: 1px solid var(--border-color) !important;
+    border-top: none !important;
+    color: var(--text-main) !important;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 12px 16px !important;
+}
+
+.table td, .table th {
+    border-top: 1px solid var(--border-color) !important;
+    padding: 12px 16px !important;
+    vertical-align: middle !important;
+}
+
+table.dataTable tbody tr {
+    background-color: transparent !important;
+    transition: background 0.15s ease !important;
+}
+
+table.dataTable tbody tr:hover {
+    background-color: rgba(243, 228, 201, 0.05) !important;
+}
+
+/* Form Inputs */
+.form-control {
+    background-color: var(--bg-base) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    border-radius: 6px !important;
+}
+
+.form-control:focus {
+    border-color: var(--accent-bg) !important;
+    box-shadow: 0 0 0 2px rgba(139, 94, 60, 0.2) !important;
+}
+
+/* Typography Tweaks */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+}
+
+/* Login Page specific */
+body.login-page {
+    background: var(--bg-base) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-box {
+    width: 400px !important;
+}
+
+.login-box .card {
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--accent-bg) !important; /* Bronze border for login card */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+    border-radius: 12px !important;
+}
+
+.login-card-body {
+    background: transparent !important;
+    padding: 2.5rem !important;
+}
+
+.login-logo a {
+    color: var(--text-main) !important;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+}
