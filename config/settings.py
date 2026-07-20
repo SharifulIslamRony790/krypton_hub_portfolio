@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -24,7 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-+32l=_j46s$@37*nbvg%go5-8+*xu4^gj^qj@&z&&z1y!9%3ub')
+SECRET_KEY = os.getenv(
+    'SECRET_KEY',
+    'django-insecure-+32l=_j46s$@37*nbvg%go5-8+*xu4^gj^qj@&z&&z1y!9%3ub')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
@@ -41,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # Local Apps
     'core',
 ]
@@ -80,14 +83,28 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', f"postgres://{os.getenv('DB_USER', 'postgres')}:{os.getenv('DB_PASSWORD', 'postgres')}@{os.getenv('DB_HOST', 'localhost')}:{os.getenv('DB_PORT', '5432')}/{os.getenv('DB_NAME', 'krypton_db')}"),
-        conn_max_age=600
-    )
-}
+        default=os.getenv(
+            'DATABASE_URL',
+            f"postgres://{
+                os.getenv(
+                    'DB_USER',
+                    'postgres')}:{
+                        os.getenv(
+                            'DB_PASSWORD',
+                            'postgres')}@{
+                                os.getenv(
+                                    'DB_HOST',
+                                    'localhost')}:{
+                                        os.getenv(
+                                            'DB_PORT',
+                                            '5432')}/{
+                                                os.getenv(
+                                                    'DB_NAME',
+                                                    'krypton_db')}"),
+        conn_max_age=600)}
 
 
 # Password validation
@@ -95,16 +112,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa: E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # noqa: E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # noqa: E501
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa: E501
     },
 ]
 

@@ -14,15 +14,53 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ContactMessage',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('email', models.EmailField(max_length=254)),
-                ('company', models.CharField(blank=True, max_length=255, null=True)),
-                ('phone', models.CharField(blank=True, max_length=50, null=True)),
-                ('service', models.CharField(choices=[('software', 'Software Architecture & Web Engineering'), ('cybersecurity', 'Cybersecurity & Threat Mitigation'), ('marketing', 'Performance Marketing & Brand Growth'), ('design', 'UI/UX & Brand Design'), ('full_stack', 'Full 360° Integration'), ('other', 'Other')], default='other', max_length=50)),
-                ('message', models.TextField()),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('is_read', models.BooleanField(default=False)),
+                ('id',
+                 models.BigAutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')),
+                ('name',
+                 models.CharField(
+                     max_length=255)),
+                ('email',
+                 models.EmailField(
+                     max_length=254)),
+                ('company',
+                 models.CharField(
+                     blank=True,
+                     max_length=255,
+                     null=True)),
+                ('phone',
+                 models.CharField(
+                     blank=True,
+                     max_length=50,
+                     null=True)),
+                ('service',
+                 models.CharField(
+                     choices=[
+                         ('software',
+                          'Software Architecture & Web Engineering'),
+                         ('cybersecurity',
+                          'Cybersecurity & Threat Mitigation'),
+                         ('marketing',
+                          'Performance Marketing & Brand Growth'),
+                         ('design',
+                          'UI/UX & Brand Design'),
+                         ('full_stack',
+                          'Full 360° Integration'),
+                         ('other',
+                          'Other')],
+                     default='other',
+                     max_length=50)),
+                ('message',
+                 models.TextField()),
+                ('created_at',
+                 models.DateTimeField(
+                     auto_now_add=True)),
+                ('is_read',
+                 models.BooleanField(
+                     default=False)),
             ],
             options={
                 'verbose_name': 'Contact Message',
