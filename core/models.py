@@ -34,7 +34,55 @@ class ContactMessage(models.Model):
         verbose_name_plural = "Contact Messages"
 
     def __str__(self):
-        return f"{
-            self.name} - {
-            self.company or 'No Company'} ({
-            self.get_service_display()})"
+        return f"{self.name} - {self.company or 'No Company'} ({self.get_service_display()})"
+
+
+class Service(models.Model):
+    """
+    Model for storing agency services dynamically.
+    """
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    icon_name = models.CharField(
+        max_length=100, help_text="Lucide icon name (e.g. 'code-2', 'shield-check')")
+    color_theme = models.CharField(
+        max_length=50, help_text="Tailwind color prefix (e.g. 'accent', 'success', 'orange-400', 'purple-400')")
+    order = models.PositiveIntegerField(
+        default=0, help_text="Order in which service appears")
+
+    # Features/Bullet points could be a separate model, or stored as JSON, but for simplicity we will store them as a newline-separated string
+    features = models.TextField(
+        help_text="Enter features separated by a new line", blank=True)
+
+    class Meta:
+        ordering = ['order', 'id']
+        verbose_name = "Service"
+        verbose_name_plural = "Services"
+
+    def __str__(self):
+        return self.title
+
+    def get_features_list(self):
+        return [f.strip() for f in self.features.split('\n') if f.strip()]
+
+
+class TeamMember(models.Model):
+    """
+    Model for storing team members dynamically.
+    """
+    name = models.CharField(max_length=200)
+    designation = models.CharField(max_length=200)
+    department = models.CharField(
+        max_length=100, help_text="e.g. 'Advanced Engineering', 'Defensive Architecture'")
+    bio = models.TextField()
+    image = models.ImageField(
+        upload_to="team/", help_text="Upload 1:1 ratio square WebP image")
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+        verbose_name = "Team Member"
+        verbose_name_plural = "Team Members"
+
+    def __str__(self):
+        return self.name

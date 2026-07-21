@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ContactMessage
+from .models import ContactMessage, Service, TeamMember
 
 # Admin Site Branding
 admin.site.site_header = "Krypton 360 Admin Portal"
@@ -43,4 +43,21 @@ class ContactMessageAdmin(admin.ModelAdmin):
     @admin.action(description='Mark selected messages as read')
     def mark_as_read(self, request, queryset):
         updated = queryset.update(is_read=True)
-        self.message_user(request, f"{updated} message(s) successfully marked as read.")
+        self.message_user(
+            request, f"{updated} message(s) successfully marked as read.")
+
+
+@admin.register(Service)
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ('title', 'icon_name', 'color_theme', 'order')
+    list_editable = ('order',)
+    search_fields = ('title', 'description')
+    ordering = ('order',)
+
+
+@admin.register(TeamMember)
+class TeamMemberAdmin(admin.ModelAdmin):
+    list_display = ('name', 'designation', 'department', 'order')
+    list_editable = ('order',)
+    search_fields = ('name', 'designation', 'department')
+    ordering = ('order',)

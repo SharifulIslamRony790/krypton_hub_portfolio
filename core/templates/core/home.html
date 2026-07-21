@@ -127,96 +127,21 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
-            <!-- Team Member 1 -->
-            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
+            {% for member in team_members %}
+            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group {% if forloop.last and team_members|length|divisibleby:2 == False %}md:col-span-2 lg:col-span-1{% endif %}">
                 <div class="flex items-center gap-6 mb-6">
-                    <img src="{% static 'images/team/nabid.webp' %}?v=5" alt="Nabid Ahmad" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
+                    {% if member.image %}
+                    <img src="{{ member.image.url }}" alt="{{ member.name }}" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
+                    {% endif %}
                     <div>
-                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Advanced Engineering</div>
-                        <h4 class="text-xl font-bold text-textMain">Nabid Ahmad</h4>
-                        <p class="text-textSecondary text-sm">Full-Stack Developer</p>
+                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">{{ member.department }}</div>
+                        <h4 class="text-xl font-bold text-textMain">{{ member.name }}</h4>
+                        <p class="text-textSecondary text-sm">{{ member.designation }}</p>
                     </div>
                 </div>
-                <p class="text-textSecondary text-sm leading-relaxed">Nabid works across Python/Django and PHP/Laravel, with hands-on project experience spanning school management systems, pharmacy management platforms, and fitness-club web applications.</p>
+                <p class="text-textSecondary text-sm leading-relaxed">{{ member.bio }}</p>
             </div>
-            
-            <!-- Team Member 2 -->
-            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
-                <div class="flex items-center gap-6 mb-6">
-                    <img src="{% static 'images/team/rony.webp' %}?v=5" alt="Md Shariful Islam Rony" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
-                    <div>
-                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Advanced Engineering</div>
-                        <h4 class="text-xl font-bold text-textMain">Md Shariful Islam Rony</h4>
-                        <p class="text-textSecondary text-sm">Full-Stack Developer</p>
-                    </div>
-                </div>
-                <p class="text-textSecondary text-sm leading-relaxed">Rony is a Python/Django developer who has architected and deployed three live full-stack applications, including a flight-booking platform integrating Google OAuth 2.0 and PostgreSQL.</p>
-            </div>
-
-            <!-- Team Member 3 -->
-            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
-                <div class="flex items-center gap-6 mb-6">
-                    <img src="{% static 'images/team/khairul.webp' %}?v=5" alt="Md Khairul Islam Akaid" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
-                    <div>
-                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Defensive Architecture</div>
-                        <h4 class="text-xl font-bold text-textMain">Md Khairul Islam Akaid</h4>
-                        <p class="text-textSecondary text-sm">Cybersecurity Professional</p>
-                    </div>
-                </div>
-                <p class="text-textSecondary text-sm leading-relaxed">Khairul brings a Linux-first foundation to the team's security practice, with a growing specialization in cybersecurity fundamentals, threat awareness, and security operations tooling.</p>
-            </div>
-
-            <!-- Team Member 4 -->
-            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
-                <div class="flex items-center gap-6 mb-6">
-                    <img src="{% static 'images/team/abdullah.webp' %}?v=5" alt="Abdullah Al Siddik" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
-                    <div>
-                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Defensive Architecture</div>
-                        <h4 class="text-xl font-bold text-textMain">Abdullah Al Siddik</h4>
-                        <p class="text-textSecondary text-sm">Cybersecurity Professional</p>
-                    </div>
-                </div>
-                <p class="text-textSecondary text-sm leading-relaxed">Abdullah focuses on offensive and defensive security — penetration testing, vulnerability assessment, and network monitoring. He applies OWASP Top 10 methodology to every web application the team ships.</p>
-            </div>
-
-            <!-- Team Member 5 -->
-            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
-                <div class="flex items-center gap-6 mb-6">
-                    <img src="{% static 'images/team/farzana.webp' %}?v=5" alt="Farzana Akter Popi" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
-                    <div>
-                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Growth & Performance</div>
-                        <h4 class="text-xl font-bold text-textMain">Farzana Akter Popi</h4>
-                        <p class="text-textSecondary text-sm">Growth Specialist</p>
-                    </div>
-                </div>
-                <p class="text-textSecondary text-sm leading-relaxed">Farzana leads client-facing marketing and lead generation. Her background spans digital marketing, CRM, and direct sales across several customer-facing roles.</p>
-            </div>
-
-            <!-- Team Member 6 -->
-            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group">
-                <div class="flex items-center gap-6 mb-6">
-                    <img src="{% static 'images/team/afia.webp' %}?v=5" alt="Afia Najnine" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
-                    <div>
-                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Growth & Performance</div>
-                        <h4 class="text-xl font-bold text-textMain">Afia Najnine</h4>
-                        <p class="text-textSecondary text-sm">Client Relations Specialist</p>
-                    </div>
-                </div>
-                <p class="text-textSecondary text-sm leading-relaxed">Afia brings a client-facing foundation to the growth team, currently managing student communications, Meta Business Suite, and WhatsApp broadcast campaigns.</p>
-            </div>
-
-            <!-- Team Member 7 -->
-            <div class="gsap-up bg-white p-8 rounded-2xl border border-borderCustom hover:shadow-lg transition-shadow group md:col-span-2 lg:col-span-1">
-                <div class="flex items-center gap-6 mb-6">
-                    <img src="{% static 'images/team/nurul.webp' %}?v=5" alt="Nurul Ahanaf Adil" class="w-20 h-20 rounded-full bg-gray-100 object-cover border-2 border-transparent group-hover:border-accent transition-colors">
-                    <div>
-                        <div class="text-accent text-xs font-bold uppercase tracking-wider mb-1">Visual Identity</div>
-                        <h4 class="text-xl font-bold text-textMain">Nurul Ahanaf Adil</h4>
-                        <p class="text-textSecondary text-sm">Graphic Designer</p>
-                    </div>
-                </div>
-                <p class="text-textSecondary text-sm leading-relaxed">Nurul is an NSDA-certified graphic designer working across Adobe Photoshop and Illustrator to deliver social content, banners, and brand collateral.</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -232,77 +157,24 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
-            <!-- Service 1 -->
+            {% for service in services %}
             <div class="gsap-up bg-textMain text-primary rounded-3xl p-10 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl -mr-20 -mt-20 transition-all group-hover:bg-accent/30"></div>
+                <div class="absolute top-0 right-0 w-64 h-64 bg-{{ service.color_theme|default:'accent' }}/20 rounded-full blur-3xl -mr-20 -mt-20 transition-all group-hover:bg-{{ service.color_theme|default:'accent' }}/30"></div>
                 <div class="relative z-10">
                     <div class="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
-                        <i data-lucide="code-2" class="w-8 h-8 text-accent"></i>
+                        <i data-lucide="{{ service.icon_name|default:'code-2' }}" class="w-8 h-8 text-{{ service.color_theme|default:'accent' }}"></i>
                     </div>
-                    <div class="text-accent font-bold text-sm tracking-widest mb-2">SERVICE 1/4</div>
-                    <h3 class="text-2xl font-bold mb-4">Software Architecture & Web Engineering</h3>
-                    <p class="text-gray-400 mb-8">Custom applications and infrastructure engineered to scale, not just to launch.</p>
+                    <div class="text-{{ service.color_theme|default:'accent' }} font-bold text-sm tracking-widest mb-2">SERVICE {{ forloop.counter }}/{{ services|length }}</div>
+                    <h3 class="text-2xl font-bold mb-4">{{ service.title }}</h3>
+                    <p class="text-gray-400 mb-8">{{ service.description }}</p>
                     <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent"></i> Custom web & enterprise apps</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent"></i> Django & Laravel architecture</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-accent"></i> API integrations & DB Design</li>
+                        {% for feature in service.get_features_list %}
+                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-{{ service.color_theme|default:'accent' }}"></i> {{ feature }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
-
-            <!-- Service 2 -->
-            <div class="gsap-up bg-textMain text-primary rounded-3xl p-10 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-success/20 rounded-full blur-3xl -mr-20 -mt-20 transition-all group-hover:bg-success/30"></div>
-                <div class="relative z-10">
-                    <div class="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
-                        <i data-lucide="shield-check" class="w-8 h-8 text-success"></i>
-                    </div>
-                    <div class="text-success font-bold text-sm tracking-widest mb-2">SERVICE 2/4</div>
-                    <h3 class="text-2xl font-bold mb-4">Cybersecurity & Threat Mitigation</h3>
-                    <p class="text-gray-400 mb-8">Security engineered in from day one — not audited in after launch.</p>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-success"></i> Penetration testing & ethical hacking</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-success"></i> Vulnerability assessments</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-success"></i> Infrastructure hardening</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="gsap-up bg-textMain text-primary rounded-3xl p-10 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/20 rounded-full blur-3xl -mr-20 -mt-20 transition-all group-hover:bg-orange-500/30"></div>
-                <div class="relative z-10">
-                    <div class="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
-                        <i data-lucide="trending-up" class="w-8 h-8 text-orange-400"></i>
-                    </div>
-                    <div class="text-orange-400 font-bold text-sm tracking-widest mb-2">SERVICE 3/4</div>
-                    <h3 class="text-2xl font-bold mb-4">Performance Marketing & Brand Growth</h3>
-                    <p class="text-gray-400 mb-8">Growth engineered on real data, not assumptions.</p>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-orange-400"></i> Lead generation & campaigns</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-orange-400"></i> Content strategy & funnels</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-orange-400"></i> Brand positioning</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Service 4 -->
-            <div class="gsap-up bg-textMain text-primary rounded-3xl p-10 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl -mr-20 -mt-20 transition-all group-hover:bg-purple-500/30"></div>
-                <div class="relative z-10">
-                    <div class="w-16 h-16 bg-gray-800 rounded-2xl flex items-center justify-center mb-8">
-                        <i data-lucide="palette" class="w-8 h-8 text-purple-400"></i>
-                    </div>
-                    <div class="text-purple-400 font-bold text-sm tracking-widest mb-2">SERVICE 4/4</div>
-                    <h3 class="text-2xl font-bold mb-4">UI/UX & Brand Design</h3>
-                    <p class="text-gray-400 mb-8">Design that is engineered for conversion and trust, not just aesthetics.</p>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-400"></i> Brand identity systems</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-400"></i> Web interface design (UI/UX)</li>
-                        <li class="flex items-center gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-400"></i> Social & campaign assets</li>
-                    </ul>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

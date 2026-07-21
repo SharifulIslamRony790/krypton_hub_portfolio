@@ -168,7 +168,8 @@ JAZZMIN_SETTINGS = {
     "search_model": ["core.ContactMessage"],
     "user_avatar": None,
     "topmenu_links": [
-        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Home",  "url": "admin:index",
+            "permissions": ["auth.view_user"]},
         {"name": "View Site", "url": "/", "new_window": True},
     ],
     "show_sidebar": True,
@@ -186,5 +187,5 @@ JAZZMIN_SETTINGS = {
 
 JAZZMIN_UI_TWEAKS = {
     "theme": "darkly",
-    "dark_mode_theme": "darkly",
+    "default_theme_mode": "dark",
 }

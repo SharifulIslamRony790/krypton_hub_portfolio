@@ -1,0 +1,174 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static dashboard_tags %}
+
+{% block extrastyle %}
+{{ block.super }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    /* Dashboard Specific Styles */
+    .dashboard-header {
+        margin-bottom: 2rem;
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    }
+    
+    .stat-card-title {
+        font-size: 0.875rem;
+        color: #9ca3af;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stat-card-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .stat-card.accent { border-top: 4px solid var(--primary-accent); }
+    .stat-card.success { border-top: 4px solid #10B981; }
+    .stat-card.info { border-top: 4px solid #3B82F6; }
+    .stat-card.warning { border-top: 4px solid #F59E0B; }
+
+    .chart-container {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+        height: 400px;
+    }
+    
+    .dashboard-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .dashboard-row {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% get_dashboard_stats as stats %}
+
+<div class="dashboard-header">
+    <h1 style="color: white; font-size: 2rem; margin-bottom: 0.5rem;">Business Analytics</h1>
+    <p style="color: #9ca3af;">Live overview of Krypton 360 performance and leads.</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card accent">
+        <div class="stat-card-title">Total Leads</div>
+        <div class="stat-card-value">{{ stats.total_leads }}</div>
+    </div>
+    <div class="stat-card warning">
+        <div class="stat-card-title">Unread Leads</div>
+        <div class="stat-card-value">{{ stats.unread_leads }}</div>
+    </div>
+    <div class="stat-card info">
+        <div class="stat-card-title">Active Services</div>
+        <div class="stat-card-value">{{ stats.active_services }}</div>
+    </div>
+    <div class="stat-card success">
+        <div class="stat-card-title">Team Members</div>
+        <div class="stat-card-value">{{ stats.team_count }}</div>
+    </div>
+</div>
+
+<div class="dashboard-row">
+    <div class="chart-container">
+        <h2 style="color: white; margin-bottom: 1rem; font-size: 1.25rem;">Leads by Service</h2>
+        <canvas id="leadsChart"></canvas>
+    </div>
+    
+    <!-- Jazzmin App List Override manually (so we still have links to edit models) -->
+    <div class="chart-container" style="overflow-y: auto;">
+        <h2 style="color: white; margin-bottom: 1rem; font-size: 1.25rem;">Quick Links</h2>
+        <div class="list-group">
+        {% for app in app_list %}
+            <h4 style="color: #9ca3af; margin-top: 1rem; margin-bottom: 0.5rem;">{{ app.name }}</h4>
+            {% for model in app.models %}
+                <a href="{{ model.admin_url }}" class="list-group-item" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); margin-bottom: 0.5rem; border-radius: 0.5rem; color: white; display: block; padding: 0.75rem 1rem; text-decoration: none;">
+                    <i class="{{ model.icon|default:'fas fa-circle' }}" style="margin-right: 0.5rem; color: var(--primary-accent);"></i>
+                    {{ model.name }}
+                </a>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const ctx = document.getElementById('leadsChart').getContext('2d');
+        const labels = {{ stats.chart_labels|safe }};
+        const data = {{ stats.chart_data|safe }};
+        
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Leads',
+                    data: data,
+                    backgroundColor: [
+                        '#C8A97E', // Bronze
+                        '#3B82F6', // Blue
+                        '#10B981', // Green
+                        '#F59E0B', // Orange
+                        '#8B5CF6', // Purple
+                        '#64748B'  // Gray
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            color: '#e5e7eb',
+                            font: {
+                                family: "'Outfit', sans-serif"
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+{% endblock %}

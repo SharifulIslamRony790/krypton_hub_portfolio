@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import ContactMessage
+from .models import ContactMessage, Service, TeamMember
 
 
 def home_view(request):
@@ -12,7 +12,7 @@ def home_view(request):
         email = request.POST.get('email')
         company = request.POST.get('company')
         phone = request.POST.get('phone')
-        service = request.POST.get('service')
+        service_value = request.POST.get('service')
         message = request.POST.get('message')
 
         # Server-side validation
@@ -26,17 +26,21 @@ def home_view(request):
                 email=email,
                 company=company,
                 phone=phone,
-                service=service,
+                service=service_value,
                 message=message
             )
             messages.success(
                 request,
-                'Thank you! Your message has been sent successfully. We will get back to you soon.')  # noqa: E501
+                'Thank you! Your message has been sent successfully. We will get back to you soon.')
         except Exception:
             messages.error(
                 request,
-                'An error occurred while sending your message. Please try again later.')  # noqa: E501
+                'An error occurred while sending your message. Please try again later.')
 
         return redirect('home')
 
-    return render(request, 'core/home.html')
+    context = {
+        'services': Service.objects.all(),
+        'team_members': TeamMember.objects.all()
+    }
+    return render(request, 'core/home.html', context)
