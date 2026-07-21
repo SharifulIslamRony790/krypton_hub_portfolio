@@ -1,11 +1,10 @@
-from core.models import Service, TeamMember
 import os
 import django
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
 
-
+from core.models import Service, TeamMember
 def populate():
     # Populate Services
     services = [
