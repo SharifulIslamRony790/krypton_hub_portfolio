@@ -1,63 +1,154 @@
-# Krypton 360° - Premium Enterprise Landing Website
+# 🚀 Krypton 360° - Enterprise Technical Agency Web Application & Dynamic CRM
 
-This is a premium, enterprise-grade landing page for **Krypton 360°**, a 360-degree digital and technology agency. The project is built using modern web technologies to ensure high performance, security, and a beautiful user experience.
+**Krypton 360°** is a high-performance, dynamic technical agency web application, portfolio, and Content Management System (CRM) built on a modern Django Monolithic Architecture. It showcases agency services, team members, and client lead management with a custom-built analytics admin dashboard.
 
-## Tech Stack
-- **Backend**: Django 5+, Python, PostgreSQL
-- **Frontend**: Tailwind CSS, Alpine.js, HTML5
-- **Animations**: GSAP (GreenSock), Lenis Smooth Scroll
-- **Deployment**: Production ready for Render / Heroku with Gunicorn & WhiteNoise
+---
 
-## Project Structure
-- `/core`: Django application handling core views and logic.
-- `/templates`: Modular HTML templates including `base.html`, `loader.html`, `navbar.html`, `footer.html`.
-- `/static`: Contains all assets including `css`, `images`, `icons`, and `js`.
-- `config/`: Django project configuration files.
+## 🌟 Key Features
 
-## How to Run Locally
+- **Dynamic Landing Page**: Responsive dark-mode interface featuring dynamic Services grid and Team Member roster.
+- **Custom Admin & Analytics Dashboard**: Built on `django-jazzmin` with live KPI metric cards (Total Leads, Unread Inquiries, Active Services, Team Members) and an interactive **Chart.js** Donut Chart ("Leads by Service").
+- **Dynamic Content Management (CRM)**: Agency owners can manage Services, Team Members, and Client Messages directly from the Admin Dashboard without touching code.
+- **Interactive UI & Smooth Animations**: Powered by Alpine.js for lightweight state management and GSAP (GreenSock) for smooth scroll animations.
+- **Production Media & Asset Handling**: Self-contained production media serving via `django.views.static.serve` and WhiteNoise static asset compression.
+- **Automated Data Seeding**: Includes `populate_db.py` to auto-initialize default agency services, corporate team headshots, and data during build/deployment.
+- **Infrastructure as Code**: Configured for automated deployment on Render.com via `render.yaml` Blueprint.
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/SharifulIslamRony790/krypton_hub_portfolio.git
-   cd krypton_hub_portfolio
-   ```
+---
 
-2. **Create a virtual environment & install dependencies:**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: .\venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
+## 🛠️ Technology Stack
 
-3. **Install Node modules & build Tailwind CSS:**
-   ```bash
-   npm install
-   npm run build
-   ```
+| Layer | Technologies |
+| :--- | :--- |
+| **Backend Framework** | Python 3.12+ / Django 5.2+ |
+| **Database** | PostgreSQL (Neon DB in Production via `DATABASE_URL`) / SQLite (Local Fallback) |
+| **Admin & CRM** | Django Jazzmin, Custom Template Tags, Chart.js Analytics |
+| **Frontend Styling** | Tailwind CSS (Compiled via npm build pipeline) |
+| **Interactivity** | Alpine.js |
+| **Animations** | GSAP (GreenSock) |
+| **Icons** | Lucide Icons (Web Components) |
+| **Production Server** | Gunicorn (WSGI) |
+| **Static & Media** | WhiteNoise (`CompressedManifestStaticFilesStorage`), Django Static Serve |
+| **Deployment** | Render.com (`render.yaml` Blueprint) |
 
-4. **Environment Variables:**
-   Create a `.env` file in the root directory and add:
-   ```env
-   DEBUG=True
-   SECRET_KEY=your-secret-key
-   DATABASE_URL=postgres://user:password@localhost:5432/krypton_db
-   ```
-   *(If you want to use SQLite locally instead of Postgres, comment out the `dj_database_url` config in `settings.py`)*
+---
 
-5. **Run Migrations & Start Server:**
-   ```bash
-   python manage.py migrate
-   python manage.py runserver
-   ```
+## 📁 Project Directory Structure
 
-## Customizing Assets (Images & Logos)
-To update the website's assets without changing code, replace the following files:
-- **Main Logo:** `static/icons/logo.svg`
-- **Loader Logo (White):** `static/icons/logo_white.svg`
-- **Team Photos:** `static/images/team/[name].svg` (Replace with your actual images or change the `.svg` extension in `home.html` to `.jpg/.png`).
+```text
+Krypton 360/
+├── config/                      # Core Django Project Configuration
+│   ├── settings.py              # Environment, DB, Jazzmin, Static & Media settings
+│   ├── urls.py                  # Global Routing & Production Media Handler
+│   └── wsgi.py                  # Gunicorn WSGI Entry Point
+├── core/                        # Main Application Package
+│   ├── templatetags/
+│   │   └── dashboard_tags.py    # Custom tags (`get_dashboard_stats`) for Admin metrics & Chart data
+│   ├── templates/core/
+│   │   └── home.html            # Dynamic Landing Page Template
+│   ├── admin.py                 # Admin Registrations (ContactMessage, Service, TeamMember)
+│   ├── models.py                # Database Schemas
+│   ├── urls.py                  # Application Routes & Form Processing
+│   └── views.py                 # Landing Page View & Lead Capture Handler
+├── templates/                   # Global Templates & Overrides
+│   ├── base.html                # Main Layout (Tailwind output, Alpine, GSAP)
+│   ├── admin/
+│   │   └── index.html           # Custom Analytics Dashboard Override with Chart.js
+│   └── components/              # Reusable UI (navbar.html, footer.html, loader.html)
+├── static/                      # Compiled CSS, Brand SVGs, and Raw Assets
+├── media/                       # Uploaded & Seeded Media Files (media/team/)
+├── populate_db.py               # Auto-population script for Services & Team Members
+├── render.yaml                  # Render Blueprint IaC configuration
+├── Procfile                     # Gunicorn Process Definition
+├── requirements.txt             # Python Dependencies
+├── AGENTS.md                    # AI Agent System Context & Architectural Guidelines
+└── project_information.md       # Project Single Source of Truth (SSOT)
+```
 
-## Deployment
-The project is configured for seamless deployment on platforms like Render. It includes:
-- `render.yaml` for infrastructure as code.
-- `Procfile` configured with Gunicorn.
-- `WhiteNoise` integration for static file serving.
+---
+
+## 🗄️ Database Schemas (`core/models.py`)
+
+1. **`ContactMessage`**: Client inquiry leads submitted via the landing page form.
+   - Fields: `name`, `email`, `company`, `phone`, `service`, `message`, `is_read`, `created_at`.
+2. **`Service`**: Agency offerings dynamically rendered on the website.
+   - Fields: `title`, `description`, `icon_name` (Lucide icon identifier), `color_theme`, `order`, `features` (newline-separated bullet list).
+3. **`TeamMember`**: Dynamic team profiles.
+   - Fields: `name`, `designation`, `department`, `bio`, `image` (WebP corporate headshots uploaded to `media/team/`), `order`.
+
+---
+
+## 💻 Local Development Setup
+
+### 1. Clone & Setup Virtual Environment
+```bash
+git clone https://github.com/SharifulIslamRony790/krypton_hub_portfolio.git
+cd krypton_hub_portfolio
+
+python -m venv venv
+# On Windows PowerShell:
+.\venv\Scripts\activate
+# On Linux/macOS:
+source venv/bin/activate
+```
+
+### 2. Install Dependencies
+```bash
+pip install -r requirements.txt
+npm install
+```
+
+### 3. Build Static Assets
+```bash
+npm run build
+```
+
+### 4. Configure Environment Variables
+Create a `.env` file in the root directory:
+```env
+DEBUG=True
+SECRET_KEY=your-secret-key-here
+DATABASE_URL=postgres://user:password@localhost:5432/krypton_db
+```
+
+### 5. Run Migrations & Populate Initial Data
+```bash
+python manage.py migrate
+python populate_db.py
+```
+
+### 6. Start Development Server
+```bash
+python manage.py runserver
+```
+Visit `http://127.0.0.1:8000/` in your browser. Access the custom admin panel at `http://127.0.0.1:8000/admin/`.
+
+---
+
+## 🚀 Production Deployment (Render.com)
+
+The application is fully pre-configured for automated deployment on Render using the `render.yaml` blueprint.
+
+- **Build Command**:
+  ```bash
+  pip install -r requirements.txt && npm install && npm run build && python manage.py collectstatic --noinput && python manage.py migrate && python populate_db.py
+  ```
+- **Start Command**:
+  ```bash
+  gunicorn config.wsgi:application
+  ```
+- **Environment Configuration**: Set `DATABASE_URL` in the Render dashboard pointing to your PostgreSQL database instance (e.g. Neon DB).
+
+---
+
+## 🤖 AI Agent & Developer Guidelines
+
+For developers or AI coding agents working on this project, please consult:
+- **`AGENTS.md`**: Contains strict constraints, execution rules, and system details for AI agents.
+- **`project_information.md`**: Single Source of Truth (SSOT) covering vision, architecture, and changelog.
+
+---
+
+## 📝 License & Copyright
+
+© **Krypton 360° Agency**. All rights reserved.
